@@ -1,0 +1,22 @@
+<ul class="media-list">
+
+  <li *ngFor="let recipe of myRecipeList" 
+       class="well" 
+       (click) = "onClick(recipe)"
+       (mouseenter) = "mouseEnter()"
+       (mouseleave) ="mouseLeave()"
+       [ngStyle] = "listItemStyle"
+       [ngClass] = "listItemClass">
+    <div class="media-body">
+    <h4 class="media-heading">{{recipe.name}}</h4>
+    <p>{{recipe.shortDesc}}</p>
+    <p>{{ recipe.price| currency:'USD':true}}</p>
+  </div>
+  <div class="media-right media-middle">
+    <img 
+    src="{{recipe.imageUrl}}" 
+    class="media-object" 
+    style="width:60px">
+  </div>
+  </li>
+</ul>

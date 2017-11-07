@@ -1,0 +1,10 @@
+.li:hover { 
+    padding: 10px;
+    background-color: #84DAFE;
+    
+  /* HOVER ON */
+   -webkit-transition: all 1s;
+   -moz-transition: all 1s;
+   -o-transition: all 1s;
+   transition: all 1s;
+}

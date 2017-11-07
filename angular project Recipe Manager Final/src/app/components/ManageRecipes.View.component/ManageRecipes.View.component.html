@@ -1,0 +1,81 @@
+<form 
+    [formGroup]="form" 
+    (ngSubmit)="submitNewRecipe()">
+        <div 
+            *ngIf="form.errors" 
+            class="alert alert-danger">
+            One or more of the fields is invalid.
+        </div>
+    <div class="row">
+    <div class="col-md-7">
+        <h2>Recipe Deitals</h2>
+        <div class="form-group">
+                <div style="width: 200px">
+                <label for="name">Recipe Name</label>
+                 <input
+                type="text"
+                class="form-control"
+                id="name"
+                placeholder="Enter name"
+                formControlName= "recipename"
+                [(ngModel)] = "recipeName">
+                </div>
+                <div *ngIf="recipename.touched && recipename.invalid" class="alert alert-danger">Recipe name is requiered.</div>
+
+                <br>
+
+                <div style="width: 500px">
+                <label for="description">Description</label>
+                 <textarea
+                id="description"
+                class="form-control"
+                rows="5"
+                placeholder="Enter Description"
+                formControlName="recipedesc"
+                [(ngModel)] = "recipeDesc"></textarea>
+                </div>
+                <div *ngIf="recipedesc.touched && recipedesc.invalid" class="alert alert-danger">Description is requiered.</div>
+
+                <br>
+
+                <div style="width: 200px">
+                <label for="price">Recipe Price</label>
+                 <input
+                oncut="return false" 
+                onpaste="return false" 
+                OnlyNumber="true"
+                type="text"
+                class="form-control"
+                id="price"
+                placeholder="Price"
+                formControlName="recipeprice"
+                [(ngModel)] = "recipePrice">
+                </div>
+                <div *ngIf="recipeprice.touched && recipeprice.invalid" class="alert alert-danger">Recipe price is requiered.</div>
+
+                <br>
+
+                <div style="width: 200px">
+                <label for="image">Image Url</label>
+                 <input
+                type="text" 
+                class="form-control" 
+                id="image"
+                placeholder="Image path" 
+                formControlName="recipeimageurl" 
+                [(ngModel)] = "recipeImageUrl">
+                </div>
+        </div>
+        <br>
+        <br>
+        <button 
+        type="button" 
+        class="btn btn-lg btn-warning pull-right" 
+        (click)="submitNewRecipe()">Submit Your New Recipe</button>
+    </div>
+
+    <div class="col-md-5">
+        <Manage-Recipe-add (myEvent)="onIngredientChange($event)"></Manage-Recipe-add>
+    </div>
+</div>
+</form>

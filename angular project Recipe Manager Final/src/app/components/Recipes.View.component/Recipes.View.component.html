@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-xs-8">
+         <my-recipe-list 
+         [myRecipeList] = "recipeList" 
+         (change)="onRecipeChanged($event)"
+         ></my-recipe-list>
+    </div>
+        <div class="col-xs-4">
+            <div>
+                <edit-recipe
+                (editSaveChanges) = "onRecipeSaveChanges($event)"
+                *ngIf="recipeEditExpose"
+                [editedRecipe] = "selectedRecipeToEdit" 
+                ></edit-recipe>
+                
+                <my-recipe-details 
+                [shownRecipe] = "selectedRecipe"
+                *ngIf="recipeDetailsExpose" 
+                (addToCart)="onRecipeToCart($event)"
+                (editRecipe) = "onRecipeEdit($event)"
+                ></my-recipe-details>
+            </div>
+            <div *ngIf="!recipeDetailsExpose">
+                <h2>Choose a recipe</h2>
+            </div>
+        </div>
+</div>
+

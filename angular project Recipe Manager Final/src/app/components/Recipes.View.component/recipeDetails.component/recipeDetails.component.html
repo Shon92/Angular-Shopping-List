@@ -1,0 +1,26 @@
+ <h1>{{shownRecipe.name}}</h1>
+ <br>
+  <div><b>{{shownRecipe.shortDesc}}</b></div>
+  <div><b>Price: {{shownRecipe.price | currency:'USD':true}}</b></div>
+     <button 
+     type="button" 
+     class="btn btn-sm btn-primary" 
+     style="margin-top: 1em; margin-bottom: 1em" 
+     (click) = "onAddToCartClick(shownRecipe)">Add to cart
+     </button>
+     <button 
+     type="button" 
+     class="btn btn-sm btn-danger" 
+     style="margin-top: 1em; margin-bottom: 1em" 
+     (click) = "onEditClick(shownRecipe)">Edit
+     </button>
+     <div>
+     <ul class="list-group">
+         <li 
+         class="list-group-item li"
+         *ngFor="let Ingredient of shownRecipe.ingredient">
+           {{Ingredient.name }}({{Ingredient.amount}})
+        </li>
+       </ul> 
+  </div>
+<img src="{{shownRecipe.imageUrl}}" style="height: 25em; width: 30em">

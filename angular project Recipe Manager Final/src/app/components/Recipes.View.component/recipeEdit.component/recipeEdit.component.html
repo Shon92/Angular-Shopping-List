@@ -1,0 +1,90 @@
+
+<div style="width: 200px">
+    <label for="name">Edit Name</label>
+    <input
+    type="text"
+    class="form-control"
+    id="editName"
+    value="{{editedRecipe.name}}"
+    [(ngModel)] = "editedRecipe.name"
+></div>
+<div style="width: 200px">
+    <label for="name">Edit Description</label>
+    <input
+    type="text"
+    class="form-control"
+    id="editDesc"
+    value="{{editedRecipe.shortDesc}}"
+    [(ngModel)] = "editedRecipe.shortDesc"
+></div>
+<div style="width: 200px">
+    <label for="name">Edit Price</label>
+    <input
+    type="text"
+    class="form-control"
+    id="editPrice"
+    OnlyNumber="true"
+    oncut="return false" 
+    onpaste="return false"
+    MaxLength="3"
+    value="{{editedRecipe.price}}"
+    [(ngModel)] = "editedRecipe.price"
+></div>
+<div style="width: 200px">
+    <label for="name">Edit Image</label>
+    <input
+    type="text"
+    class="form-control"
+    id="editPrice"
+    value="{{editedRecipe.imageUrl}}"
+    [(ngModel)] = "editedRecipe.imageUrl"
+></div>
+<div>
+    <label for="name">Edit Ingredients
+        <button 
+        style="margin-left: 0.5em" 
+        type="button" 
+        class="close" 
+        aria-label="Close" 
+        (click) = "addIngredient()">
+          <span 
+          style="color: green" 
+          aria-hidden="true" 
+          class="glyphicon glyphicon-plus">
+          </span>
+        </button>
+    </label>
+    <ul  class="list-group">
+        <li 
+        class="list-group-item" 
+        style="display: inline-block">
+        <input 
+        type="text" 
+        [(ngModel)] = "newIngName">
+        <input 
+        OnlyNumber="true" 
+        MaxLength="3" 
+        style="width: 3em" 
+        [(ngModel)] = "newIngAmount">
+        </li>
+    </ul>
+    
+    <ul class="list-group">
+         <li 
+         class="list-group-item" 
+         *ngFor="let Ingredient of recipeIngredients" 
+         style="width: 18em">
+         {{Ingredient.name }}{{Ingredient.amount }}
+                 <button 
+                 type="button" 
+                 class="close" 
+                 aria-label="Close" 
+                 (click) = "removeIngredient(Ingredient)">
+                     <span aria-hidden="true">&times;</span>
+                </button>
+         </li>
+    </ul>
+</div>
+
+<button type="button" class="btn btn-sm btn-warning" (click)="onSaveChanges(editedRecipe)">Save Changes</button>
+
